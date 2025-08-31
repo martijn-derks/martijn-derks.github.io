@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+<!--
+CHANGELOG
+2025-08-17  data   2025.08.17.1 • Weekendplanning opgeschoond, NL+Latijn namen in toelichting, geen oai_citation-tokens
+2025-08-16  layout 1.2.3        • Zelfde lay-out/JS als vorige werkende versie (filters/zoek + printvoorbeelden)
+-->
+<html data-data-version="2025.08.31.6" data-layout-version="1.2.3" lang="nl">
+<head>
+<meta charset="utf-8"/>
+<meta content="1.2.3" name="gptuin-layout-version"/>
+<meta content="2025.08.31.6" name="gptuin-data-version"/>
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<title>Tuinplanning 2025 — Weekendoverzicht (klik voor details)</title>
+<style>
+    :root{--fg:#161b22;--muted:#6b7280;--accent:#2a7a4d;--rule:#e5e7eb;--bg:#ffffff;--card:#f8fafc;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg)}
+    body{font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial}
+    .wrap{max-width:920px;margin:40px auto;padding:0 24px 80px}
+    header{margin-bottom:18px}
+    h1{font-size:32px;line-height:1.2;margin:0 0 6px;font-weight:800}
+    .sub{color:var(--muted);font-size:14px;margin-bottom:14px}
+    hr{border:none;border-top:2px solid var(--rule);margin:14px 0 22px}
+    h2{font-size:22px;margin:28px 0 10px}
+    .month{page-break-inside:avoid}
+    details.task{background:var(--card);border:1px solid var(--rule);border-left:5px solid var(--accent);border-radius:12px;padding:0;margin:10px 0}
+    summary{list-style:none;cursor:pointer;padding:12px 14px;user-select:none;display:flex;align-items:baseline;gap:8px}
+    summary::-webkit-details-marker{display:none}
+    .date{font-weight:800}
+    .title{font-weight:600}
+    .more{padding:0 16px 14px 16px;border-top:1px dashed var(--rule)}
+    .more ul{margin:8px 0 0 18px}
+    .note{color:var(--muted);font-size:13px;margin-top:10px}
+    .split{height:1px;background:var(--rule);margin:26px 0}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 0}
+    .btn{border:1px solid var(--rule);background:#fff;padding:6px 10px;border-radius:8px;cursor:pointer}
+    .btn:hover{border-color:var(--accent)}
+    #tools{gap:8px;flex-wrap:wrap}
+    #tools input[type="search"]{border:1px solid var(--rule);padding:6px 10px;border-radius:8px}
+    #tools label.btn{display:inline-flex;align-items:center;gap:6px}
+
+    /* Onzichtbare, maar toegankelijke link (alleen in toelichting) */
+    .plant-link{color:inherit;text-decoration:none;border:0}
+    .plant-link:visited{color:inherit}
+    .plant-link:hover{text-decoration:none}
+    .plant-link .ext{display:none!important}
+    .plant-link:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+    @media print{
+      .toolbar{display:none!important}
+      .wrap{padding:0 20px}
+      h1{font-size:26px}
+      h2{font-size:18px;margin:18px 0 8px}
+      details.task{break-inside:avoid}
+      .split{page-break-after:always}
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    }
+  </style>
+</meta></head>
+<body>
+<div class="wrap">
+<header>
+<h1>Tuinplanning 2025 — Weekendoverzicht (klik voor details)</h1>
+<div class="sub">Alle klussen op <strong>zaterdagen</strong>. Klik op de datumregel om de toelichting te openen/sluiten. Locaties: appel (achter, langs sloot), peer (achter, onder wilg), druiven (bij veranda). Weer: snoei bij droog weer; niet bemesten bij vorst.</div>
+<!-- TOOLBAR -->
+<div class="toolbar" id="tools">
+<input class="btn" id="q" placeholder="Zoek (bijv. druif, snoei, gazon)…" style="min-width:260px" type="search"/>
+<label class="btn"><input checked="" class="tag" type="checkbox" value="druif"/> Druif</label>
+<label class="btn"><input checked="" class="tag" type="checkbox" value="fruit"/> Appel/Peer</label>
+<label class="btn"><input checked="" class="tag" type="checkbox" value="gazon"/> Gazon</label>
+<label class="btn"><input checked="" class="tag" type="checkbox" value="snoei"/> Snoei</label>
+<label class="btn"><input checked="" class="tag" type="checkbox" value="vaste"/> Vaste planten</label>
+<label class="btn"><input checked="" class="tag" type="checkbox" value="bollen"/> Bollen</label>
+<button class="btn" id="openAll">Alles openklappen</button>
+<button class="btn" id="closeAll">Alles dichtklappen</button>
+<button class="btn" id="reset">Reset filters</button>
+<button class="btn" id="previewSummary">Voorbeeld print (samenvatting)</button>
+<button class="btn" id="previewFull">Voorbeeld print (alles open)</button>
+</div>
+<hr/>
+</header>
+<!-- JAN -->
+<section class="month" id="jan">
+<h2>Januari</h2>
+
+<details class="task" open="">
+<summary><span class="date">Za 18 jan</span> <span class="title">Wintersnoei — Druif; Appel &amp; Peer</span></summary>
+<div class="more">
+<ul>
+<li><strong>Druif</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Vitis_vinifera" rel="noopener" target="_blank">Vitis vinifera<span class="ext">↗</span></a>): alle scheuten tot <strong>2 knoppen</strong>; dode/zwakke takken weg; vóór sapstroom snoeien.</li>
+<li><strong>Appel &amp; peer (leivorm)</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Malus_domestica" rel="noopener" target="_blank">Malus domestica<span class="ext">↗</span></a>; <a class="plant-link" href="https://nl.wikipedia.org/wiki/Pyrus_communis" rel="noopener" target="_blank">Pyrus communis<span class="ext">↗</span></a>): kruisend/naar binnen weg; <strong>3–4 hoofdtakken</strong> per etage; zijscheuten tot <strong>3 knoppen</strong>.</li>
+<li><em>Weer:</em> droog, vorstvrij. Gereedschap ontsmetten.</li>
+</ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- FEB -->
+<section class="month" id="feb">
+<h2>Februari</h2>
+
+
+
+<details class="task">
+<summary><span class="date">Za 1 feb</span> <span class="title">Gazon — bekalken (voortuin, mosdruk)</span></summary>
+<div class="more">
+<ul>
+<li><strong>Gazon</strong>: dun verdelen met kalk; niet combineren met bemesting.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 8 feb</span> <span class="title">Nassella tenuissima — terugknippen</span></summary>
+<div class="more">
+<ul>
+<li><strong>Prachthaver</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Nassella_tenuissima" rel="noopener" target="_blank">Nassella tenuissima<span class="ext">↗</span></a>): pol terugknippen tot 10–15 cm.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 15 feb</span> <span class="title">Kerstroos — oude bladeren weg</span></summary>
+<div class="more">
+<ul>
+<li><strong>Kerstroos</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Helleborus_niger" rel="noopener" target="_blank">Helleborus niger<span class="ext">↗</span></a>): oude/zieke bladeren wegnemen.</li>
+</ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- MRT -->
+<section class="month" id="mrt">
+<h2>Maart</h2>
+
+
+
+
+<details class="task">
+<summary><span class="date">Za 1 mrt</span> <span class="title">Snoei — Rozen &amp; Vlinderstruiken</span></summary>
+<div class="more">
+<ul>
+<li><strong>Rozen</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Roos_(plant)" rel="noopener" target="_blank">Rosa<span class="ext">↗</span></a>): terugsnoei tot 3–5 ogen.</li>
+<li><strong>Vlinderstruik</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Buddleja_davidii" rel="noopener" target="_blank">Buddleja davidii<span class="ext">↗</span></a>): hoofdsnoei tot 30–50 cm; 3–5 hoofdtakken behouden.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 8 mrt</span> <span class="title">Voorjaarssnoei — Lavendel; siergras &amp; Heuchera</span></summary>
+<div class="more">
+<ul>
+<li><strong>Lavendel</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Lavandula" rel="noopener" target="_blank">Lavandula<span class="ext">↗</span></a>): vormsnoei, knip tot net boven jong groen (niet in oud hout).</li>
+<li><strong>Lampenpoetsersgras</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Pennisetum_alopecuroides" rel="noopener" target="_blank">Pennisetum alopecuroides<span class="ext">↗</span></a>): oude halmen afknippen.</li>
+<li><strong>Heuchera</strong> (bv. ‘Silver Scrolls’): dode bladresten weg, pol luchtig maken.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 15 mrt</span> <span class="title">Border bij veranda (kruidenmix) — schoonmaken &amp; reset</span></summary>
+<div class="more">
+<ul>
+<li>Oude stengels weg; houtige kruiden (salie/rozemarijn) licht terugsnoeien; onkruid wieden.</li>
+<li><a class="plant-link" href="https://nl.wikipedia.org/wiki/Salvia_microphylla" rel="noopener" target="_blank">Salvia ‘Hot Lips’<span class="ext">↗</span></a>, <a class="plant-link" href="https://nl.wikipedia.org/wiki/Agastache" rel="noopener" target="_blank">Agastache<span class="ext">↗</span></a> e.a. klaarzetten voor aprilknip.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 22 mrt</span> <span class="title">Magnolia — lichte bemesting</span></summary>
+<div class="more">
+<ul>
+<li><strong>Magnolia</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Magnolia" rel="noopener" target="_blank">Magnolia<span class="ext">↗</span></a>): handje compost/koemestkorrels rondom, niet tegen stam.</li>
+</ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- APR -->
+<section class="month" id="apr">
+<h2>April</h2>
+
+
+
+<details class="task">
+<summary><span class="date">Za 5 apr</span> <span class="title">Druif — aanbinden &amp; scheutselectie</span></summary>
+<div class="more">
+<ul>
+<li>Zwakkere dubbele scheuten wegnemen, sterke aanbinden aan leidraad.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 12 apr</span> <span class="title">Hortensia — bemesten; Salvia ‘Hot Lips’ — terugknippen</span></summary>
+<div class="more">
+<ul>
+<li><strong>Hydrangea</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Hortensia" rel="noopener" target="_blank">Hydrangea<span class="ext">↗</span></a>): organisch bemesten.</li>
+<li><strong>Salvia ‘Hot Lips’</strong>: tot gezond hout terugknippen; vorm behouden.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 19 apr</span> <span class="title">Agastache — terugknippen; Achtertuin gazon — verticuteren; bladluis-check; Krentenboom observatie</span></summary>
+<div class="more">
+<ul>
+<li><strong>Agastache</strong>: tot 10–15 cm terug.</li>
+<li><strong>Gazon</strong> (achter &amp; voor): licht verticuteren; kale plekjes doorzaaien.</li>
+</ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- MEI -->
+<section class="month" id="mei">
+<h2>Mei</h2>
+
+
+
+<details class="task">
+<summary><span class="date">Za 3 mei</span> <span class="title">Druif — dieven/scheutdunning</span></summary>
+<div class="more">
+<ul><li>Zijscheuten (dieven) verwijderen; 1 scheut per positie laten.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 10 mei</span> <span class="title">Appel &amp; Peer — vruchtdunning</span></summary>
+<div class="more">
+<ul><li>Trossen uitdunnen tot 1 vrucht per cluster voor kwaliteit.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 17 mei</span> <span class="title">Krentenboom — lichte vormsnoei (na bloei)</span></summary>
+<div class="more">
+<ul><li><strong>Krentenboom</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Amelanchier" rel="noopener" target="_blank">Amelanchier<span class="ext">↗</span></a>): alleen storende takjes na bloei.</li></ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- JUN -->
+<section class="month" id="jun">
+<h2>Juni</h2>
+
+
+
+
+<details class="task">
+<summary><span class="date">Za 7 jun</span> <span class="title">Druif — zomersnoei &amp; blad lichter maken</span></summary>
+<div class="more">
+<ul><li>Blad rond (toekomstige) trossen luchtiger; 6e blad voorbij laatste tros toppen.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 14 jun</span> <span class="title">Amberboom (leivorm) — zomersnoei</span></summary>
+<div class="more">
+<ul><li><strong>Amberboom</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Liquidambar" rel="noopener" target="_blank">Liquidambar<span class="ext">↗</span></a>): jonge zijloten inkorten, leivlak strak houden.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 21 jun</span> <span class="title">Waterlot-check — moerbei, appel, peer</span></summary>
+<div class="more">
+<ul><li>Steile waterscheuten op stam/gestel wegnemen of terugzetten.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 28 jun</span> <span class="title">Magnolia — lichte correcties (na bloei)</span></summary>
+<div class="more">
+<ul><li>Alleen dode/kruisende takken; terughoudend snoeien.</li></ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- JUL -->
+<section class="month" id="jul">
+<h2>Juli</h2>
+
+
+
+<details class="task">
+<summary><span class="date">Za 5 jul</span> <span class="title">Lavendel — zomersnoei (na bloei)</span></summary>
+<div class="more">
+<ul><li>Bloemstelen + topjes weg; niet in oud hout.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 12 jul</span> <span class="title">Voortuin gazon — 2e bemesting; Prachtkaars zomersnoei</span></summary>
+<div class="more"><ul><li>Langwerkende mest; beregenen indien droog.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 19 jul</span> <span class="title">Vaste planten — doorbloei stimuleren</span></summary>
+<div class="more">
+<ul>
+<li><strong>Prachtkaars</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Gaura" rel="noopener" target="_blank">Gaura/Oenothera lindheimeri<span class="ext">↗</span></a>): licht terugknippen voor nieuwe bloei.</li>
+<li><strong>Heuchera</strong>: uitgebloeide aren wegknippen.</li>
+</ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- AUG -->
+<section class="month" id="aug">
+<h2>Augustus</h2>
+
+
+
+
+<details class="task">
+<summary><span class="date">Za 2 aug</span> <span class="title">Druif — toppen lange scheuten</span></summary>
+<div class="more"><ul><li>Tot 6 bladeren voorbij laatste tros.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 9 aug</span> <span class="title">Vlinderstruik — uitgebloeide pluimen weg</span></summary>
+<div class="more"><ul><li>Doorsnijden tot boven jong zijgroen, bloei verlengen.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 16 aug</span> <span class="title">Waterlot-check — moerbei/fruit</span></summary>
+<div class="more"><ul><li>Storend waterlot wegnemen.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 23 aug</span> <span class="title">Vijg — wekelijks rijpheidscheck (t/m begin okt)</span></summary>
+<div class="more"><ul><li>Elke week zacht/doorhangend fruit oogsten.</li></ul></div>
+</details></section>
+<div class="split"></div>
+<!-- SEP -->
+<section class="month" id="sep">
+<h2>September</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+<details class="task">
+<summary><span class="date">Za 6 sep</span> <span class="title">Campanula ‘Emerald’ — nazorg na aanplant (watergift &amp; standplaats-check)</span></summary>
+<div class="more"><ul><li>4–6 weken wekelijks water bij droogte; aanplantdiepte checken; zwakke scheuten verwijderen.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 6 sep</span> <span class="title">Voortuin gazon — verticuteren</span></summary>
+<div class="more"><ul><li>Na zomerseizoen vilt eruit; mosdruk verminderen.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 6 sep</span> <span class="title">Agapanthus — uitgebloeide stengels weg</span></summary>
+<div class="more"><ul><li>Stengels tot aan de basis wegnemen; blad laten zitten.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 6 sep</span> <span class="title">Gipskruid — opschonen / terugsnoei</span></summary>
+<div class="more"><ul><li>Lichte vormsnoei voor compacte groei.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 13 sep</span> <span class="title">Druif — oogst</span></summary>
+<div class="more"><ul><li>Suiker/zuur proeven; trossen met snoeischaar knippen.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 20 sep</span> <span class="title">Appel &amp; Peer — oogst</span></summary>
+<div class="more"><ul><li>Draai-test (loslaten) voor plukrijpheid.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 27 sep</span> <span class="title">Lithodora — licht vormknippen (na bloei)</span></summary>
+<div class="more">
+<ul><li><strong>Lithodora</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Lithodora_diffusa" rel="noopener" target="_blank">Lithodora diffusa<span class="ext">↗</span></a>): alleen uitstekende sprieten.</li>
+</ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- OKT -->
+<section class="month" id="okt">
+<h2>Oktober</h2>
+
+
+
+
+
+
+<details class="task">
+<summary><span class="date">Za 4 okt</span> <span class="title">Sierui ‘Drumstick’ — bollen planten</span></summary>
+<div class="more">
+<ul><li><strong>Allium sphaerocephalon</strong>: 10–15 cm diep; in groepjes voor natuurlijke look.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 11 okt</span> <span class="title">Borders — winterklaar maken</span></summary>
+<div class="more"><ul><li>Afgestorven stengels weg; vorstgevoelige soorten afdekken.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 11 okt</span> <span class="title">Astilbe — (optioneel) delen/verplanten; alternatief kiezen</span></summary>
+<div class="more"><ul><li><strong>Astilbe</strong>: delen of verplanten als hoogte/omvang te groot is; alternatief: Brunnera ‘Jack Frost’ of Geranium phaeum.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 18 okt</span> <span class="title">Gazon — najaarsbemesting</span></summary>
+<div class="more"><ul><li>Kaliumrijk; bevordert winterhardheid.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 25 okt</span> <span class="title">Kerstroos — mulch; Lavendel — laatste lichte snoei</span></summary>
+<div class="more">
+<ul>
+<li>Kerstroos: dunne laag compost/bladaarde rondom.</li>
+<li>Lavendel: losse bloemresten/uitstekende takjes weg; <em>niet</em> in oud hout.</li>
+</ul>
+</div>
+</details></section>
+<div class="split"></div>
+<!-- NOV -->
+<section class="month" id="nov">
+<h2>November</h2>
+
+
+
+
+
+
+
+<details class="task">
+<summary><span class="date">Za 1 nov</span> <span class="title">Amberboom (leivorm) — lichte correcties</span></summary>
+<div class="more"><ul><li>Kleine vormcorrecties; hoofdsnoei zomers (jun).</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 8 nov</span> <span class="title">Herfstanemoon — terugknippen</span></summary>
+<div class="more">
+<ul><li><strong>Herfstanemoon</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Anemone_hupehensis" rel="noopener" target="_blank">Anemone hupehensis<span class="ext">↗</span></a>): na eerste vorst stengels tot de grond weg.</li></ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 15 nov</span> <span class="title">Olijf &amp; Vijg — vorstbescherming paraat</span></summary>
+<div class="more">
+<ul>
+<li><strong>Olijf</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Olea_europaea" rel="noopener" target="_blank">Olea europaea<span class="ext">↗</span></a>) &amp; <strong>Vijg</strong> (<a class="plant-link" href="https://nl.wikipedia.org/wiki/Vijgenboom" rel="noopener" target="_blank">Ficus carica<span class="ext">↗</span></a>): vliesdoek/afscherming klaarleggen.</li>
+</ul>
+</div>
+</details><details class="task">
+<summary><span class="date">Za 22 nov</span> <span class="title">Pioenroos — loof wegnemen (na eerste vorst)</span></summary>
+<div class="more"><ul><li><strong>Pioenroos</strong> (Paeonia lactiflora): afgestorven stengels tot de grond wegknippen; dun laagje bladcompost is prima.</li></ul></div>
+</details><details class="task">
+<summary><span class="date">Za 29 nov</span> <span class="title">Astilbe — afgestorven blad weg (of laten staan tot maart)</span></summary>
+<div class="more"><ul><li>Blad/stelen tot 5–10 cm terugnemen óf laten staan als winterdek; dan in maart weghalen.</li></ul></div>
+</details></section>
+<div class="split"></div>
+<!-- DEC -->
+<section class="month" id="dec">
+<h2>December</h2>
+
+<details class="task">
+<summary><span class="date">Za 6 dec</span> <span class="title">Algemene inspectie — borders &amp; klimhulp</span></summary>
+<div class="more">
+<ul><li>Storm-/vorstschade checken; losse banden/paaltjes nalopen.</li></ul>
+</div>
+</details></section>
+<p class="note">Notities: voortuin gazon ±60 m² (schaduw, handmaaier). Achtergazon ±105 m² (robotmaaier). Wilg bewust niet opgenomen. Campanula ‘Emerald’ in nazomer aanplanten (olijf &amp; roos).</p>
+</div>
+<script>
+  // Versie-info naar JS (gebruikt door print-preview)
+  (function(){
+    const html = document.documentElement;
+    window.GPTUIN = {
+      LAYOUT_VERSION: html.dataset.layoutVersion || '',
+      DATA_VERSION:   html.dataset.dataVersion   || ''
+    };
+  })();
+</script>
+<!-- Filters/zoek en open/dicht -->
+<script>
+(function(){
+  const details = Array.from(document.querySelectorAll('details.task'));
+
+  // eenvoudige tag-mapper (herkenning op samenvattingstekst)
+  const map = [
+    [/(druif|vitis)/i,                     ['druif','snoei']],
+    [/(appel|peer|malus|pyrus)/i,          ['fruit','snoei']],
+    [/(gazon|verticut|bemest)/i,           ['gazon']],
+    [/(lavendel|pennisetum|nassella|heuchera|agastache|anemone|campanula|lithodora|hydrangea)/i, ['vaste']],
+    [/(bollen|allium|sphaerocephalon)/i,   ['bollen']]
+  ];
+  const kindTags = [
+    [/snoei|terugknip|vorm|zomer|winter/i, 'snoei'],
+    [/bemest/i, 'bemesting'],
+    [/plant|aanplant/i, 'bollen']
+  ];
+
+  details.forEach(d => {
+    const txt = d.querySelector('summary')?.innerText?.toLowerCase() || '';
+    const tags = new Set();
+    map.forEach(([re, tg]) => { if(re.test(txt)) tg.forEach(t=>tags.add(t)); });
+    kindTags.forEach(([re, t]) => { if(re.test(txt)) tags.add(t); });
+    if(/gazon/.test(txt)) tags.add('gazon');
+    if(tags.size===0) tags.add('overig');
+    d.dataset.tags = Array.from(tags).join(',');
+  });
+
+  const q = document.getElementById('q');
+  const tagBoxes = Array.from(document.querySelectorAll('.tag'));
+  function filter(){
+    const qv = (q?.value || '').toLowerCase();
+    const active = new Set(tagBoxes.filter(b=>b.checked).map(b=>b.value));
+    details.forEach(d => {
+      const text = d.innerText.toLowerCase();
+      const tags = (d.dataset.tags||'').split(',');
+      const hasTag = active.size===0 || tags.some(t=>active.has(t));
+      const hasText = !qv || text.includes(qv);
+      d.style.display = (hasTag && hasText) ? '' : 'none';
+    });
+  }
+  q?.addEventListener('input', filter);
+  tagBoxes.forEach(b => b.addEventListener('change', filter));
+  document.getElementById('openAll')?.addEventListener('click', () => details.forEach(d => d.open = true));
+  document.getElementById('closeAll')?.addEventListener('click', () => details.forEach(d => d.open = false));
+  document.getElementById('reset')?.addEventListener('click', () => { if(q) q.value=''; tagBoxes.forEach(b=>b.checked=true); filter(); });
+  filter();
+})();
+</script>
+<!-- PRINT-VOORBEELDEN (nieuw tabblad via Blob; Safari-compatibel) -->
+<script>
+(function(){
+  function buildPreviewHTML(mode){
+    const title = document.querySelector('h1')?.textContent || 'Tuinplanning';
+    const sub   = document.querySelector('.sub')?.textContent || '';
+    const months = Array.from(document.querySelectorAll('section.month'));
+    const layoutV = (window.GPTUIN && GPTUIN.LAYOUT_VERSION) || '';
+    const dataV   = (window.GPTUIN && GPTUIN.DATA_VERSION)   || '';
+
+    const esc = s => String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+    let body = `<header><h1>${esc(title)}</h1><div class="sub">${esc(sub)}</div><div class="meta">Layout ${esc(layoutV)} • Data ${esc(dataV)} • Modus: ${mode==='summary'?'samenvatting':'volledig'}</div><hr></header>`;
+
+    months.forEach(sec => {
+      const h2 = sec.querySelector('h2')?.textContent || '';
+      body += `<section><h2>${esc(h2)}</h2>`;
+      const items = Array.from(sec.querySelectorAll('details.task'));
+      items.forEach(d => {
+        const sum = d.querySelector('summary')?.textContent || '';
+        if(mode==='summary'){
+          body += `<ul class="summary"><li><span class="date">${esc(sum.split(' ')[1]||'')}</span> ${esc(sum)}</li></ul>`;
+        } else {
+          body += `<div class="task"><div class="sum">${esc(sum)}</div><div class="more">${d.querySelector('.more')?.innerHTML||''}</div></div>`;
+        }
+      });
+      body += `</section>`;
+    });
+
+    const html = `<!doctype html>
+<html lang="nl"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>${esc(title)} — Voorbeeld</title>
+<style>
+  body{font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial;margin:0;padding:24px;color:#161b22}
+  h1{margin:0 0 2px;font-size:22px;font-weight:800}
+  .sub,.meta{color:#6b7280;font-size:12px}
+  hr{border:none;border-top:2px solid #e5e7eb;margin:10px 0 16px}
+  h2{font-size:16px;margin:14px 0 6px}
+  .summary{list-style:none;margin:0;padding:0}
+  .summary li{padding:6px 8px;border:1px solid #e5e7eb;border-left:4px solid #2a7a4d;border-radius:10px;margin:6px 0}
+  .summary .date{font-weight:700;margin-right:6px}
+  .task{border:1px solid #e5e7eb;border-left:4px solid #2a7a4d;border-radius:10px;margin:8px 0}
+  .task .sum{padding:8px 10px;font-weight:600}
+  .task .more{border-top:1px dashed #e5e7eb;padding:8px 12px}
+  @media print{h1{font-size:20px}}
+</style></head><body><div class="wrap">${body}</div></body></html>`;
+    return html;
+  }
+
+  function openPreviewViaLink(mode){
+    const html = buildPreviewHTML(mode);
+    const blob = new Blob([html], {type:'text/html'});
+    const url  = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  document.getElementById('previewSummary')?.addEventListener('click', () => openPreviewViaLink('summary'));
+  document.getElementById('previewFull')?.addEventListener('click', () => openPreviewViaLink('full'));
+})();
+</script>
+</body>
+</html>
