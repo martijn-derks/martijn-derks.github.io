@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="nl" data-layout-version="inv-1.4.1" data-source="Legenda tuin 2025-08-31.txt">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Plantinventaris — Tuin Hoogkarspel</title>
+<style>
+:root{--fg:#111827;--muted:#6b7280;--rule:#e5e7eb;--accent:#2a7a4d;--bg:#fff;--card:#f8fafc;--chip:#eef2f7}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg)}
+body{font:15.5px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial}
+.wrap{max-width:1100px;margin:36px auto 72px;padding:0 22px}
+h1{font-size:30px;margin:0 0 4px;font-weight:800}
+.sub{color:var(--muted);font-size:13px;margin:0 0 12px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 10px}
+input[type="search"],select{border:1px solid var(--rule);padding:8px 10px;border-radius:10px;min-width:230px}
+.btn{border:1px solid var(--rule);background:#fff;padding:8px 12px;border-radius:10px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+#typeChips .chip{background:var(--chip);border:1px solid var(--rule);padding:6px 10px;border-radius:999px;font-size:12px;display:inline-flex;gap:6px;align-items:center}
+hr{border:none;border-top:2px solid var(--rule);margin:12px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.zone{grid-column:1/-1}
+.zone h2{font-size:20px;margin:18px 0 6px}
+details.card{grid-column:span 6;background:var(--card);border:1px solid var(--rule);border-left:5px solid var(--accent);border-radius:14px;overflow:hidden}
+@media (max-width:860px){details.card{grid-column:1/-1}}
+summary{list-style:none;padding:10px 12px 8px;cursor:pointer;display:flex;gap:10px;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+.ttl{font-weight:700}
+.latin{font-style:italic;color:var(--muted)}
+.meta{margin-left:auto;color:var(--muted);font-size:12px}
+.body{border-top:1px dashed var(--rule);padding:10px 12px 12px}
+.body dl{display:grid;grid-template-columns:120px 1fr;gap:6px 10px;margin:8px 0}
+.body dt{color:var(--muted)} .body dd{margin:0}
+.plant-link{color:inherit;text-decoration:none;border:0}
+.plant-link:visited{color:inherit}
+.zone-empty{grid-column:1/-1;color:var(--muted);font-style:italic;padding:6px 2px}
+@media print{.toolbar{display:none} .wrap{padding:0 20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Plantinventaris</h1>
+    <div class="sub">Bron: <strong>Legenda tuin 2025-08-31.txt</strong> • Layout inv-1.4.1</div>
+    <div class="toolbar">
+      <input type="search" id="q" placeholder="Zoek (bijv. Geranium, Z5, Vaste)…" />
+      <select id="zoneSelect">
+        <option value="">Alle zones</option>
+        <option value="Z1">Z1 — Terras (onder moerbei)</option>
+<option value="Z2">Z2 — Border terras (vijg)</option>
+<option value="Z3">Z3 — Border terras (krentenboom)</option>
+<option value="Z4">Z4 — Border bij veranda</option>
+<option value="Z5">Z5 — Border bij wilg</option>
+<option value="Z6">Z6 — Achter langs sloot</option>
+<option value="Z7">Z7 — Gazon achtertuin</option>
+<option value="Z8">Z8 — Pad langs woning</option>
+<option value="Z9">Z9 — Voortuin</option>
+<option value="Z10">Z10 — Alle borders (Z2+Z3+Z4+Z5)</option>
+      </select>
+      <div id="typeChips"></div>
+      <button class="btn" id="openAll">Alles open</button>
+      <button class="btn" id="closeAll">Alles dicht</button>
+      <button class="btn" id="print">Print</button>
+    </div>
+    <hr />
+  </header>
+
+  <div class="grid" id="list">
+    
+    <details class="card" data-zone="Z1" data-type="Boom">
+      <summary><span class="ttl">Moerbei <span class="latin">(<em>Morus alba &#x27;Fruitless&#x27;</em>)</span></span><span class="meta">Aantal: 4 • Boom</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z1 — Terras (onder moerbei)</dd>
+        <dt>Type</dt><dd>Boom</dd>
+        <dt>Aantal</dt><dd>4</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Morus_alba_&#x27;Fruitless&#x27;" target="_blank" rel="noopener">Moerbei <span class="latin">(<em>Morus alba &#x27;Fruitless&#x27;</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z1" data-type="Heester">
+      <summary><span class="ttl">Davids sneeuwbal <span class="latin">(<em>Viburnum davidii</em>)</span></span><span class="meta">Aantal: 4 • Heester</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z1 — Terras (onder moerbei)</dd>
+        <dt>Type</dt><dd>Heester</dd>
+        <dt>Aantal</dt><dd>4</dd>
+        <dt>Opmerkingen</dt><dd>onder moerbei (halfschaduw)</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Viburnum_davidii" target="_blank" rel="noopener">Davids sneeuwbal <span class="latin">(<em>Viburnum davidii</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Fruit">
+      <summary><span class="ttl">Vijg <span class="latin">(<em>Ficus carica</em>)</span></span><span class="meta">Aantal: 1 • Fruit</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Fruit</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Ficus_carica" target="_blank" rel="noopener">Vijg <span class="latin">(<em>Ficus carica</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Heester">
+      <summary><span class="ttl">Tuinhibiscus <span class="latin">(<em>Hibiscus syriacus</em>)</span></span><span class="meta">Aantal: 1 • Heester</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Heester</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>naast vijg</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Hibiscus_syriacus" target="_blank" rel="noopener">Tuinhibiscus <span class="latin">(<em>Hibiscus syriacus</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Prachtkaars <span class="latin">(<em>Gaura / Oenothera lindheimeri</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>windgevoelig; zomer ±1/3 terugzetten voor stevigheid</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Gaura_/_Oenothera_lindheimeri" target="_blank" rel="noopener">Prachtkaars <span class="latin">(<em>Gaura / Oenothera lindheimeri</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Ooievaarsbek <span class="latin">(<em>Geranium macrorrhizum</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>geurblad; sterke bodembedekker, (half)schaduw</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Geranium_macrorrhizum" target="_blank" rel="noopener">Ooievaarsbek <span class="latin">(<em>Geranium macrorrhizum</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Drop-/Anijsplant <span class="latin">(<em>Agastache foeniculum</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>bijenplant; kan zichzelf uitzaaien; steun bij wind</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Agastache_foeniculum" target="_blank" rel="noopener">Drop-/Anijsplant <span class="latin">(<em>Agastache foeniculum</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Kruipend steenzaad <span class="latin">(<em>Lithodora diffusa</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>lage blauwe bloei; houdt van doorlatende, iets zure grond</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Lithodora_diffusa" target="_blank" rel="noopener">Kruipend steenzaad <span class="latin">(<em>Lithodora diffusa</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Salie &#x27;Hot Lips&#x27; <span class="latin">(<em>Salvia microphylla</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>voorjaar licht terugsnoeien; lange bloei</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Salvia_microphylla" target="_blank" rel="noopener">Salie &#x27;Hot Lips&#x27; <span class="latin">(<em>Salvia microphylla</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Vlambloem wit <span class="latin">(<em>Phlox paniculata</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>meeldauwgevoelig; delen/verjongen om de 3–4 jaar</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Phlox_paniculata" target="_blank" rel="noopener">Vlambloem wit <span class="latin">(<em>Phlox paniculata</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Siergras">
+      <summary><span class="ttl">Vedergras <span class="latin">(<em>Stipa/Nassella tenuissima</em>)</span></span><span class="meta">Aantal: 1 • Siergras</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Siergras</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>in feb. terugknippen tot 10–15 cm; luchtig laten staan in winter</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Stipa/Nassella_tenuissima" target="_blank" rel="noopener">Vedergras <span class="latin">(<em>Stipa/Nassella tenuissima</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Purperklokje ‘Silver Scrolls’ <span class="latin">(<em>Heuchera</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>wintergroen; voorjaar opschonen; zomer aren wegknippen; delen om de 3–4 jaar; let op taxuskever</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Heuchera" target="_blank" rel="noopener">Purperklokje ‘Silver Scrolls’ <span class="latin">(<em>Heuchera</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z2" data-type="Vaste">
+      <summary><span class="ttl">Dalmatische klokjesbloem <span class="latin">(<em>Campanula portenschlagiana</em>)</span></span><span class="meta">Aantal: — • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z2 — Border terras (vijg)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>—</dd>
+        <dt>Opmerkingen</dt><dd>sterke bodembedekker; na bloei licht terugknippen</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Campanula_portenschlagiana" target="_blank" rel="noopener">Dalmatische klokjesbloem <span class="latin">(<em>Campanula portenschlagiana</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z3" data-type="Heester">
+      <summary><span class="ttl">Krentenboom <span class="latin">(<em>Amelanchier lamarckii</em>)</span></span><span class="meta">Aantal: 1 • Heester</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z3 — Border terras (krentenboom)</dd>
+        <dt>Type</dt><dd>Heester</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Amelanchier_lamarckii" target="_blank" rel="noopener">Krentenboom <span class="latin">(<em>Amelanchier lamarckii</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z3" data-type="—">
+      <summary><span class="ttl">Kruidenmix <span class="latin">(<em>rozemarijn, tijm, oregano, venkel, nepeta, persicaria</em>)</span></span><span class="meta">Aantal: — • —</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z3 — Border terras (krentenboom)</dd>
+        <dt>Type</dt><dd>—</dd>
+        <dt>Aantal</dt><dd>—</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=rozemarijn,_tijm,_oregano,_venkel,_nepeta,_persicaria" target="_blank" rel="noopener">Kruidenmix <span class="latin">(<em>rozemarijn, tijm, oregano, venkel, nepeta, persicaria</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z3" data-type="Vaste">
+      <summary><span class="ttl">Geranium &#x27;Rozanne&#x27; <span class="latin">(<em>Geranium</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z3 — Border terras (krentenboom)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Geranium" target="_blank" rel="noopener">Geranium &#x27;Rozanne&#x27; <span class="latin">(<em>Geranium</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z3" data-type="Bol">
+      <summary><span class="ttl">Sierui &#x27;Drumstick&#x27; <span class="latin">(<em>Allium sphaerocephalon</em>)</span></span><span class="meta">Aantal: 4 • Bol</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z3 — Border terras (krentenboom)</dd>
+        <dt>Type</dt><dd>Bol</dd>
+        <dt>Aantal</dt><dd>4</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Allium_sphaerocephalon" target="_blank" rel="noopener">Sierui &#x27;Drumstick&#x27; <span class="latin">(<em>Allium sphaerocephalon</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z3" data-type="Vaste">
+      <summary><span class="ttl">Ooievaarsbek <span class="latin">(<em>Geranium macrorrhizum</em>)</span></span><span class="meta">Aantal: 1 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z3 — Border terras (krentenboom)</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>geurblad; sterke bodembedekker, (half)schaduw</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Geranium_macrorrhizum" target="_blank" rel="noopener">Ooievaarsbek <span class="latin">(<em>Geranium macrorrhizum</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Siergras">
+      <summary><span class="ttl">Lampenpoetsersgras <span class="latin">(<em>Pennisetum alopecuroides</em>)</span></span><span class="meta">Aantal: 3 • Siergras</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Siergras</dd>
+        <dt>Aantal</dt><dd>3</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Pennisetum_alopecuroides" target="_blank" rel="noopener">Lampenpoetsersgras <span class="latin">(<em>Pennisetum alopecuroides</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Vaste">
+      <summary><span class="ttl">Herfstanemoon <span class="latin">(<em>Anemone hupehensis</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Anemone_hupehensis" target="_blank" rel="noopener">Herfstanemoon <span class="latin">(<em>Anemone hupehensis</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Heester">
+      <summary><span class="ttl">Roos <span class="latin">(<em>Rosa</em>)</span></span><span class="meta">Aantal: 2 • Heester</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Heester</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>één rood en één wit</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Rosa" target="_blank" rel="noopener">Roos <span class="latin">(<em>Rosa</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Vaste">
+      <summary><span class="ttl">Lavendel <span class="latin">(<em>Lavandula angustifolia</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Lavandula_angustifolia" target="_blank" rel="noopener">Lavendel <span class="latin">(<em>Lavandula angustifolia</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Vaste">
+      <summary><span class="ttl">Geranium &#x27;Rozanne&#x27; <span class="latin">(<em>Geranium</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>ook bij olijf</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Geranium" target="_blank" rel="noopener">Geranium &#x27;Rozanne&#x27; <span class="latin">(<em>Geranium</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Vaste">
+      <summary><span class="ttl">Klokjesbloem ‘Emerald’ <span class="latin">(<em>Campanula</em>)</span></span><span class="meta">Aantal: 14 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>14</dd>
+        <dt>Opmerkingen</dt><dd>onder olijf en onder roos</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Campanula" target="_blank" rel="noopener">Klokjesbloem ‘Emerald’ <span class="latin">(<em>Campanula</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Vaste">
+      <summary><span class="ttl">Afrikaanse lelie <span class="latin">(<em>Agapanthus sp.</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Agapanthus_sp." target="_blank" rel="noopener">Afrikaanse lelie <span class="latin">(<em>Agapanthus sp.</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Bol">
+      <summary><span class="ttl">Sierui &#x27;Drumstick&#x27; <span class="latin">(<em>Allium sphaerocephalon</em>)</span></span><span class="meta">Aantal: 15 • Bol</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Bol</dd>
+        <dt>Aantal</dt><dd>15</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Allium_sphaerocephalon" target="_blank" rel="noopener">Sierui &#x27;Drumstick&#x27; <span class="latin">(<em>Allium sphaerocephalon</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Boom">
+      <summary><span class="ttl">Olijf <span class="latin">(<em>Olea europaea</em>)</span></span><span class="meta">Aantal: 1 • Boom</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Boom</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>bij olijf staan Campanula ‘Emerald’ &amp; Geranium ‘Rozanne’</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Olea_europaea" target="_blank" rel="noopener">Olijf <span class="latin">(<em>Olea europaea</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Vaste">
+      <summary><span class="ttl">Kerstroos <span class="latin">(<em>Helleborus niger</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>winterbloei; in feb oude bladeren wegnemen</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Helleborus_niger" target="_blank" rel="noopener">Kerstroos <span class="latin">(<em>Helleborus niger</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z4" data-type="Vaste">
+      <summary><span class="ttl">Prachtkaars <span class="latin">(<em>Gaura / Oenothera lindheimeri</em>)</span></span><span class="meta">Aantal: 3 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z4 — Border bij veranda</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>3</dd>
+        <dt>Opmerkingen</dt><dd>idem; staat ook in andere borders</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Gaura_/_Oenothera_lindheimeri" target="_blank" rel="noopener">Prachtkaars <span class="latin">(<em>Gaura / Oenothera lindheimeri</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Fruitboom opm:ras n.t.b.">
+      <summary><span class="ttl">Peer <span class="latin">(<em>onder wilg</em>)</span></span><span class="meta">Aantal: 1 • Fruitboom opm:ras n.t.b.</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Fruitboom opm:ras n.t.b.</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=onder_wilg" target="_blank" rel="noopener">Peer <span class="latin">(<em>onder wilg</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Heester">
+      <summary><span class="ttl">Magnolia <span class="latin">(<em>Magnolia</em>)</span></span><span class="meta">Aantal: 1 • Heester</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Heester</dd>
+        <dt>Aantal</dt><dd>1</dd>
+        <dt>Opmerkingen</dt><dd>naast/onder wilg</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Magnolia" target="_blank" rel="noopener">Magnolia <span class="latin">(<em>Magnolia</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Siergras">
+      <summary><span class="ttl">Lampenpoetsersgras <span class="latin">(<em>Pennisetum alopecuroides</em>)</span></span><span class="meta">Aantal: 7 • Siergras</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Siergras</dd>
+        <dt>Aantal</dt><dd>7</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Pennisetum_alopecuroides" target="_blank" rel="noopener">Lampenpoetsersgras <span class="latin">(<em>Pennisetum alopecuroides</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Vaste">
+      <summary><span class="ttl">Herfstanemoon <span class="latin">(<em>Anemone hupehensis</em>)</span></span><span class="meta">Aantal: 4 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>4</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Anemone_hupehensis" target="_blank" rel="noopener">Herfstanemoon <span class="latin">(<em>Anemone hupehensis</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Vaste">
+      <summary><span class="ttl">Geranium &#x27;Rozanne&#x27; <span class="latin">(<em>Geranium</em>)</span></span><span class="meta">Aantal: 5 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>5</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Geranium" target="_blank" rel="noopener">Geranium &#x27;Rozanne&#x27; <span class="latin">(<em>Geranium</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Bol">
+      <summary><span class="ttl">Sierui &#x27;Drumstick&#x27; <span class="latin">(<em>Allium sphaerocephalon</em>)</span></span><span class="meta">Aantal: 4 • Bol</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Bol</dd>
+        <dt>Aantal</dt><dd>4</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Allium_sphaerocephalon" target="_blank" rel="noopener">Sierui &#x27;Drumstick&#x27; <span class="latin">(<em>Allium sphaerocephalon</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Vaste">
+      <summary><span class="ttl">Kerstroos <span class="latin">(<em>Helleborus niger</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>idem; staat ook in andere borders</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Helleborus_niger" target="_blank" rel="noopener">Kerstroos <span class="latin">(<em>Helleborus niger</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Vaste">
+      <summary><span class="ttl">Prachtkaars <span class="latin">(<em>Gaura / Oenothera lindheimeri</em>)</span></span><span class="meta">Aantal: 5 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>5</dd>
+        <dt>Opmerkingen</dt><dd>idem; staat ook in andere borders</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Gaura_/_Oenothera_lindheimeri" target="_blank" rel="noopener">Prachtkaars <span class="latin">(<em>Gaura / Oenothera lindheimeri</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Vaste">
+      <summary><span class="ttl">Salie &#x27;Hot Lips&#x27; <span class="latin">(<em>Salvia microphylla</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>voorjaar licht terugsnoeien; lange bloei</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Salvia_microphylla" target="_blank" rel="noopener">Salie &#x27;Hot Lips&#x27; <span class="latin">(<em>Salvia microphylla</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Vaste">
+      <summary><span class="ttl">Pioenroos <span class="latin">(<em>Paeonia lactiflora</em>)</span></span><span class="meta">Aantal: ±8 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>±8</dd>
+        <dt>Opmerkingen</dt><dd>witbloeiend; voorjaar opschonen; evt. delen na 4–5 jaar</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Paeonia_lactiflora" target="_blank" rel="noopener">Pioenroos <span class="latin">(<em>Paeonia lactiflora</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z5" data-type="Vaste">
+      <summary><span class="ttl">Astilbe <span class="latin">(<em>Astilbe sp.</em>)</span></span><span class="meta">Aantal: 2 • Vaste</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z5 — Border bij wilg</dd>
+        <dt>Type</dt><dd>Vaste</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>paarsbloeiend; voorjaar opschonen; delen optioneel</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Astilbe_sp." target="_blank" rel="noopener">Astilbe <span class="latin">(<em>Astilbe sp.</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z6" data-type="Fruitboom opm:ras n.t.b.">
+      <summary><span class="ttl">Appel <span class="latin">(<em>achter langs sloot</em>)</span></span><span class="meta">Aantal: 3 • Fruitboom opm:ras n.t.b.</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z6 — Achter langs sloot</dd>
+        <dt>Type</dt><dd>Fruitboom opm:ras n.t.b.</dd>
+        <dt>Aantal</dt><dd>3</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=achter_langs_sloot" target="_blank" rel="noopener">Appel <span class="latin">(<em>achter langs sloot</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z6" data-type="Klimfruit opm:wijndruif, tegen veranda">
+      <summary><span class="ttl">Druif <span class="latin">(<em>Vitis vinifera</em>)</span></span><span class="meta">Aantal: 2 • Klimfruit opm:wijndruif, tegen veranda</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z6 — Achter langs sloot</dd>
+        <dt>Type</dt><dd>Klimfruit opm:wijndruif, tegen veranda</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>—</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Vitis_vinifera" target="_blank" rel="noopener">Druif <span class="latin">(<em>Vitis vinifera</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z6" data-type="Heester">
+      <summary><span class="ttl">Vlinderstruik <span class="latin">(<em>Buddleja davidii</em>)</span></span><span class="meta">Aantal: 5 • Heester</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z6 — Achter langs sloot</dd>
+        <dt>Type</dt><dd>Heester</dd>
+        <dt>Aantal</dt><dd>5</dd>
+        <dt>Opmerkingen</dt><dd>tussen veranda en sloot</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Buddleja_davidii" target="_blank" rel="noopener">Vlinderstruik <span class="latin">(<em>Buddleja davidii</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z6" data-type="Boom">
+      <summary><span class="ttl">Amberboom <span class="latin">(<em>Liquidambar styraciflua</em>)</span></span><span class="meta">Aantal: 3 • Boom</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z6 — Achter langs sloot</dd>
+        <dt>Type</dt><dd>Boom</dd>
+        <dt>Aantal</dt><dd>3</dd>
+        <dt>Opmerkingen</dt><dd>leivorm langs water</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Liquidambar_styraciflua" target="_blank" rel="noopener">Amberboom <span class="latin">(<em>Liquidambar styraciflua</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z7" data-type="Gazon">
+      <summary><span class="ttl">Gazon <span class="latin">(<em>achtertuin</em>)</span></span><span class="meta">Aantal: — • Gazon</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z7 — Gazon achtertuin</dd>
+        <dt>Type</dt><dd>Gazon</dd>
+        <dt>Aantal</dt><dd>—</dd>
+        <dt>Opmerkingen</dt><dd>robotmaaier</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=achtertuin" target="_blank" rel="noopener">Gazon <span class="latin">(<em>achtertuin</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z8" data-type="Heester">
+      <summary><span class="ttl">Hortensia <span class="latin">(<em>Hydrangea</em>)</span></span><span class="meta">Aantal: 5 • Heester</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z8 — Pad langs woning</dd>
+        <dt>Type</dt><dd>Heester</dd>
+        <dt>Aantal</dt><dd>5</dd>
+        <dt>Opmerkingen</dt><dd>langs pad</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Hydrangea" target="_blank" rel="noopener">Hortensia <span class="latin">(<em>Hydrangea</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z9" data-type="Gazon">
+      <summary><span class="ttl">Gazon <span class="latin">(<em>voortuin</em>)</span></span><span class="meta">Aantal: — • Gazon</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z9 — Voortuin</dd>
+        <dt>Type</dt><dd>Gazon</dd>
+        <dt>Aantal</dt><dd>—</dd>
+        <dt>Opmerkingen</dt><dd>schaduw/mos; handmaaier</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=voortuin" target="_blank" rel="noopener">Gazon <span class="latin">(<em>voortuin</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+    <details class="card" data-zone="Z9" data-type="Boom">
+      <summary><span class="ttl">Sierappel <span class="latin">(<em>Malus spp., 2× in voortuin</em>)</span></span><span class="meta">Aantal: 2 • Boom</span></summary>
+      <div class="body">
+      <dl>
+        <dt>Locatie</dt><dd>Z9 — Voortuin</dd>
+        <dt>Type</dt><dd>Boom</dd>
+        <dt>Aantal</dt><dd>2</dd>
+        <dt>Opmerkingen</dt><dd>waterlot-check in zomer</dd>
+        <dt>Meer info</dt><dd><a class="plant-link" href="https://nl.wikipedia.org/w/index.php?search=Malus_spp.,_2×_in_voortuin" target="_blank" rel="noopener">Sierappel <span class="latin">(<em>Malus spp., 2× in voortuin</em>)</span></a></dd>
+      </dl>
+    </div>
+    </details>
+    
+  </div>
+</div>
+
+<script>
+const TYPE_TAGS = Array.from(new Set(Array.from(document.querySelectorAll('details.card')).map(d=>d.dataset.type))).filter(Boolean);
+function render() {
+  const q = (document.getElementById('q').value||'').toLowerCase();
+  const zone = document.getElementById('zoneSelect').value;
+  const active = new Set(Array.from(document.querySelectorAll('#typeChips input:checked')).map(i=>i.value));
+  const items = Array.from(document.querySelectorAll('details.card'));
+  let shown = 0;
+  items.forEach(d => {
+    const text = d.innerText.toLowerCase();
+    const okText = !q || text.includes(q);
+    const okZone = !zone || d.dataset.zone===zone;
+    const okType = active.size===0 || active.has(d.dataset.type);
+    const show = okText && okZone && okType;
+    d.style.display = show ? '' : 'none';
+    if (show) shown++;
+  });
+  const list = document.getElementById('list');
+  const empty = document.querySelector('.zone-empty');
+  if (shown===0) {
+    if (!empty) {
+      const p = document.createElement('div'); p.className='zone-empty'; p.textContent='Geen resultaten voor deze filters.'; list.appendChild(p);
+    }
+  } else if (empty) empty.remove();
+}
+(function bootstrap(){
+  const cont=document.getElementById('typeChips');
+  TYPE_TAGS.forEach(t=>{const id='type-'+t.replace(/[^a-z0-9]+/gi,'-').toLowerCase(); const w=document.createElement('label'); w.className='chip'; w.innerHTML=`<input id="${id}" type="checkbox" value="${t}" checked> ${t}`; cont.appendChild(w);});
+  cont.addEventListener('change',render);
+  render();
+  document.getElementById('q').addEventListener('input',render);
+  document.getElementById('zoneSelect').addEventListener('change',render);
+  document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('details.card').forEach(d=>d.open=true));
+  document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('details.card').forEach(d=>d.open=false));
+  document.getElementById('print').addEventListener('click',()=>window.print());
+})();
+</script>
+</body>
+</html>
