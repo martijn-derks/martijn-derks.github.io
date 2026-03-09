@@ -1,25 +1,1018 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <title>Tuin Hoogkarspel — Overzicht</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: system-ui, sans-serif; background: #f8fafc; color: #111827; padding: 40px; }
-    h1 { font-size: 28px; margin-bottom: 12px; }
-    ul { list-style: none; padding-left: 0; }
-    li { margin: 10px 0; }
-    a { color: #2a7a4d; text-decoration: none; font-weight: 500; font-size: 18px; }
-    a:hover { text-decoration: underline; }
-    .note { margin-top: 30px; color: #6b7280; font-size: 14px; }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Tuin Hoogkarspel — 2.0</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --white: #ffffff;
+  --off: #f7f8f5;
+  --bg: #f2f4ef;
+  --fg: #1a1f16;
+  --muted: #6b7565;
+  --rule: #dde3d8;
+  --green: #2d6a4f;
+  --green-mid: #40916c;
+  --green-light: #b7e4c7;
+  --green-pale: #e8f5ee;
+  --accent: #e76f51;
+  --accent2: #f4a261;
+  --yellow: #f9c74f;
+  --card-shadow: 0 2px 16px rgba(45,106,79,0.08), 0 1px 3px rgba(0,0,0,0.06);
+  --card-shadow-hover: 0 8px 32px rgba(45,106,79,0.15), 0 2px 8px rgba(0,0,0,0.08);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ── TOP NAV ── */
+.topnav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 0;
+  padding: 0 28px;
+  height: 60px;
+}
+.nav-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px; color: var(--green);
+  margin-right: auto;
+  letter-spacing: -0.3px;
+}
+.nav-brand span { color: var(--accent); }
+.nav-tabs { display: flex; gap: 2px; }
+.nav-tab {
+  padding: 8px 18px;
+  border: none; background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-weight: 500;
+  color: var(--muted); cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.nav-tab:hover { background: var(--green-pale); color: var(--green); }
+.nav-tab.active {
+  background: var(--green);
+  color: #fff;
+}
+
+/* ── VIEWS ── */
+.view { display: none; }
+.view.active { display: block; }
+
+/* ── DASHBOARD ── */
+.dash-hero {
+  background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 60%, #52b788 100%);
+  color: #fff;
+  padding: 48px 32px 56px;
+  position: relative; overflow: hidden;
+}
+.dash-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.dash-hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.15;
+  margin-bottom: 8px;
+  position: relative;
+}
+.dash-hero .sub {
+  opacity: 0.82; font-size: 15px; font-weight: 300;
+  position: relative;
+}
+
+.dash-wrap { max-width: 1060px; margin: 0 auto; padding: 32px 24px 64px; }
+
+/* ── THIS WEEK CARD ── */
+.week-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  border-left: 5px solid var(--accent);
+  animation: slideUp 0.4s ease both;
+}
+.week-card h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.week-card h2 .dot {
+  width: 10px; height: 10px;
+  border-radius: 50%; background: var(--accent);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+.week-tasks { display: flex; flex-wrap: wrap; gap: 10px; }
+.week-task {
+  background: var(--off);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px; font-weight: 500;
+  display: flex; align-items: center; gap: 8px;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.week-task:hover { background: var(--green-pale); border-color: var(--green-light); }
+.week-task .tag {
+  background: var(--green);
+  color: #fff; border-radius: 6px;
+  padding: 2px 7px; font-size: 11px; font-weight: 600;
+}
+.no-tasks { color: var(--muted); font-style: italic; }
+
+/* ── TILE GRID ── */
+.tile-section { margin-bottom: 36px; }
+.tile-section h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px; margin-bottom: 16px;
+  color: var(--fg);
+}
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.tile {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px 18px 18px;
+  cursor: pointer;
+  transition: all 0.22s;
+  border: 1px solid transparent;
+  animation: slideUp 0.4s ease both;
+  position: relative; overflow: hidden;
+}
+.tile:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-3px);
+  border-color: var(--green-light);
+}
+.tile-icon { font-size: 28px; margin-bottom: 10px; }
+.tile-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+.tile-count { color: var(--muted); font-size: 12px; }
+.tile-badge {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--green-pale);
+  color: var(--green);
+  border-radius: 6px; padding: 2px 8px;
+  font-size: 11px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.4px;
+}
+
+/* ── SEASON CALENDAR ── */
+.season-wrap { max-width: 1060px; margin: 0 auto; padding: 32px 24px 64px; }
+.season-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; margin-bottom: 8px;
+}
+.season-sub { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+
+.month-filter {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px;
+}
+.mf-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--rule);
+  background: var(--white);
+  border-radius: 999px;
+  font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.mf-btn:hover { border-color: var(--green); color: var(--green); }
+.mf-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+
+/* Timeline */
+.timeline { position: relative; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 72px; top: 0; bottom: 0;
+  width: 2px; background: var(--rule);
+}
+.tl-month { margin-bottom: 32px; }
+.tl-month-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 12px;
+}
+.tl-month-dot {
+  position: relative; z-index: 1;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--green); border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--green);
+  flex-shrink: 0; margin-left: 66px;
+}
+.tl-month-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+}
+.tl-month-season {
+  font-size: 12px; color: var(--muted);
+  background: var(--off);
+  padding: 2px 10px; border-radius: 999px;
+}
+.tl-items { margin-left: 88px; display: flex; flex-direction: column; gap: 10px; }
+.tl-item {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+.tl-item:hover { box-shadow: var(--card-shadow); }
+.tl-item[data-cat="druif"] { border-left-color: #6d28d9; }
+.tl-item[data-cat="fruit"] { border-left-color: var(--accent2); }
+.tl-item[data-cat="gazon"] { border-left-color: #84cc16; }
+.tl-item[data-cat="snoei"] { border-left-color: var(--accent); }
+.tl-item[data-cat="vaste"] { border-left-color: #06b6d4; }
+.tl-item[data-cat="bollen"] { border-left-color: var(--yellow); }
+
+.tl-summary {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 14px; cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.tl-summary::-webkit-details-marker { display: none; }
+.tl-date { font-weight: 700; font-size: 13px; min-width: 70px; color: var(--muted); }
+.tl-title { font-weight: 500; font-size: 14px; flex: 1; }
+.tl-cat {
+  font-size: 11px; font-weight: 600; padding: 2px 8px;
+  border-radius: 6px; text-transform: uppercase;
+  letter-spacing: 0.4px; flex-shrink: 0;
+}
+.cat-druif { background: #ede9fe; color: #6d28d9; }
+.cat-fruit { background: #fef3c7; color: #b45309; }
+.cat-gazon { background: #ecfccb; color: #4d7c0f; }
+.cat-snoei { background: #fee2e2; color: #991b1b; }
+.cat-vaste { background: #cffafe; color: #0e7490; }
+.cat-bollen { background: #fef9c3; color: #a16207; }
+.cat-overig { background: var(--off); color: var(--muted); }
+.tl-chevron { color: var(--muted); transition: transform 0.2s; font-size: 12px; }
+details.tl-item[open] .tl-chevron { transform: rotate(90deg); }
+.tl-body {
+  padding: 10px 14px 13px 14px;
+  border-top: 1px dashed var(--rule);
+  font-size: 14px; color: var(--fg);
+}
+.tl-body ul { margin: 6px 0 0 18px; }
+.tl-body ul li { margin-bottom: 4px; }
+
+/* ── INVENTARIS ── */
+.inv-wrap { max-width: 1060px; margin: 0 auto; padding: 32px 24px 64px; }
+.inv-title { font-family: 'DM Serif Display', serif; font-size: 28px; margin-bottom: 8px; }
+.inv-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+.inv-toolbar {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;
+  align-items: center;
+}
+.inv-search {
+  border: 1px solid var(--rule);
+  background: var(--white);
+  padding: 9px 14px; border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; min-width: 260px;
+  transition: border-color 0.18s;
+  outline: none;
+}
+.inv-search:focus { border-color: var(--green); }
+.inv-select {
+  border: 1px solid var(--rule); background: var(--white);
+  padding: 9px 12px; border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; cursor: pointer;
+  transition: border-color 0.18s;
+}
+.inv-select:focus { border-color: var(--green); }
+.type-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.type-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--off); border: 1px solid var(--rule);
+  padding: 5px 11px; border-radius: 999px;
+  font-size: 12px; font-weight: 500; cursor: pointer;
+  transition: all 0.15s;
+}
+.type-chip input { display: none; }
+.type-chip.checked { background: var(--green); color: #fff; border-color: var(--green); }
+
+.inv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.inv-zone-header {
+  grid-column: 1 / -1;
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px; margin-top: 12px; margin-bottom: 4px;
+  padding-bottom: 8px; border-bottom: 2px solid var(--rule);
+  display: flex; align-items: center; gap: 10px;
+}
+.inv-zone-header .zone-code {
+  background: var(--green); color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 9px; border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+details.inv-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: box-shadow 0.18s;
+}
+details.inv-card:hover { box-shadow: var(--card-shadow); }
+details.inv-card summary {
+  list-style: none; cursor: pointer;
+  padding: 12px 14px;
+  display: flex; align-items: baseline; gap: 8px;
+}
+details.inv-card summary::-webkit-details-marker { display: none; }
+.inv-name { font-weight: 600; font-size: 14px; flex: 1; }
+.inv-latin { font-style: italic; color: var(--muted); font-size: 12px; }
+.inv-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
+.inv-body {
+  border-top: 1px dashed var(--rule);
+  padding: 10px 14px 13px;
+}
+.inv-dl { display: grid; grid-template-columns: 110px 1fr; gap: 6px 10px; margin: 0; }
+.inv-dl dt { color: var(--muted); font-size: 13px; }
+.inv-dl dd { font-size: 13px; margin: 0; }
+.plant-link { color: var(--green); text-decoration: none; }
+.plant-link:hover { text-decoration: underline; }
+.inv-type-badge {
+  font-size: 11px; font-weight: 600; padding: 2px 8px;
+  border-radius: 6px; text-transform: uppercase;
+  background: var(--green-pale); color: var(--green);
+  white-space: nowrap;
+}
+.zone-empty { grid-column: 1/-1; color: var(--muted); font-style: italic; padding: 8px 2px; }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  margin-bottom: 32px;
+}
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 18px 22px;
+  flex: 1; min-width: 120px;
+  animation: slideUp 0.4s ease both;
+}
+.stat-card .num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px; color: var(--green);
+  line-height: 1;
+}
+.stat-card .lbl { color: var(--muted); font-size: 12px; margin-top: 4px; }
+
+/* ── ZONE MAP TILES ── */
+.zone-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 32px; }
+.zone-tile {
+  background: var(--white);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--card-shadow);
+  padding: 14px 16px;
+  cursor: pointer; transition: all 0.18s;
+  border: 2px solid transparent;
+}
+.zone-tile:hover, .zone-tile.active {
+  border-color: var(--green);
+  background: var(--green-pale);
+}
+.zone-tile .zt-code { font-size: 11px; font-weight: 700; color: var(--green); letter-spacing: 0.5px; text-transform: uppercase; }
+.zone-tile .zt-name { font-size: 13px; font-weight: 600; margin-top: 3px; }
+.zone-tile .zt-count { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+/* ── SEASONAL STRIP ── */
+.season-strip {
+  display: grid; grid-template-columns: repeat(12, 1fr);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden; margin-bottom: 28px;
+}
+.ss-month {
+  padding: 10px 4px; text-align: center;
+  cursor: pointer; transition: background 0.15s;
+  border-right: 1px solid var(--rule);
+}
+.ss-month:last-child { border-right: none; }
+.ss-month:hover { background: var(--green-pale); }
+.ss-month.active { background: var(--green); color: #fff; }
+.ss-month.current { outline: 2px solid var(--accent); outline-offset: -2px; }
+.ss-name { font-size: 12px; font-weight: 600; }
+.ss-count { font-size: 10px; opacity: 0.7; margin-top: 2px; }
+.ss-season-bar { height: 4px; }
+.winter { background: #bfdbfe; }
+.lente  { background: #bbf7d0; }
+.zomer  { background: #fef08a; }
+.herfst { background: #fed7aa; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .topnav { padding: 0 14px; }
+  .dash-hero { padding: 32px 18px 40px; }
+  .dash-wrap, .season-wrap, .inv-wrap { padding: 24px 14px 48px; }
+  .timeline::before { left: 0; }
+  .tl-month-dot { margin-left: 0; }
+  .tl-items { margin-left: 16px; }
+  .inv-grid { grid-template-columns: 1fr; }
+}
+
+@media print {
+  .topnav { display: none; }
+  .dash-hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
 </head>
 <body>
-  <h1>Tuin Hoogkarspel</h1>
-  <ul>
-    <li><a href="Plantinventaris.html">🌿 Plantinventaris</a></li>
-    <li><a href="Tuinplanning.html">📅 Tuinplanning 2025</a></li>
-  </ul>
-  <div class="note">Statische versie — handmatig geüpload via GitHub Pages</div>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <div class="nav-brand">Tuin Hoogkarspel <span>·</span> 2025</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showView('dashboard')">Dashboard</button>
+    <button class="nav-tab" onclick="showView('kalender')">Seizoenskalender</button>
+    <button class="nav-tab" onclick="showView('inventaris')">Plantinventaris</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     VIEW 1 — DASHBOARD
+═══════════════════════════════════════════════ -->
+<div class="view active" id="view-dashboard">
+
+  <div class="dash-hero">
+    <h1>Welkom in de tuin 🌿</h1>
+    <div class="sub">Streekweg 122, Hoogkarspel · Jouw persoonlijke tuinassistent</div>
+  </div>
+
+  <div class="dash-wrap">
+
+    <!-- This week -->
+    <div class="week-card" id="week-card">
+      <h2><span class="dot"></span> <span id="week-label">Deze week</span></h2>
+      <div class="week-tasks" id="week-tasks">
+        <span class="no-tasks">Geen geplande taken deze week.</span>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-card"><div class="num">47</div><div class="lbl">Plantensoorten</div></div>
+      <div class="stat-card"><div class="num">9</div><div class="lbl">Zones</div></div>
+      <div class="stat-card"><div class="num">165 m²</div><div class="lbl">Gazon totaal</div></div>
+      <div class="stat-card"><div class="num" id="tasks-year">36</div><div class="lbl">Tuinklussen 2025</div></div>
+    </div>
+
+    <!-- Zone tiles -->
+    <div class="tile-section">
+      <h3>Zones in de tuin</h3>
+      <div class="zone-tiles">
+        <div class="zone-tile" onclick="goZone('Terras (onder moerbei)')">
+          <div class="zt-code">Z1</div>
+          <div class="zt-name">Terras (moerbei)</div>
+          <div class="zt-count">2 planten</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Border terras (vijg)')">
+          <div class="zt-code">Z2</div>
+          <div class="zt-name">Border terras (vijg)</div>
+          <div class="zt-count">10 planten</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Border terras (krentenboom)')">
+          <div class="zt-code">Z3</div>
+          <div class="zt-name">Border (krentenboom)</div>
+          <div class="zt-count">5 planten</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Border bij veranda')">
+          <div class="zt-code">Z4</div>
+          <div class="zt-name">Border bij veranda</div>
+          <div class="zt-count">12 planten</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Border bij wilg')">
+          <div class="zt-code">Z5</div>
+          <div class="zt-name">Border bij wilg</div>
+          <div class="zt-count">11 planten</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Achter langs sloot')">
+          <div class="zt-code">Z6</div>
+          <div class="zt-name">Achter langs sloot</div>
+          <div class="zt-count">4 planten</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Gazon achtertuin')">
+          <div class="zt-code">Z7</div>
+          <div class="zt-name">Gazon achtertuin</div>
+          <div class="zt-count">105 m²</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Pad langs woning')">
+          <div class="zt-code">Z8</div>
+          <div class="zt-name">Pad langs woning</div>
+          <div class="zt-count">5 planten</div>
+        </div>
+        <div class="zone-tile" onclick="goZone('Voortuin')">
+          <div class="zt-code">Z9</div>
+          <div class="zt-name">Voortuin</div>
+          <div class="zt-count">60 m² + 2 bomen</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Season strip -->
+    <div class="tile-section">
+      <h3>Maandoverzicht</h3>
+      <div class="season-strip" id="season-strip"></div>
+    </div>
+
+    <!-- Quick tiles -->
+    <div class="tile-section">
+      <h3>Snelle toegang</h3>
+      <div class="tiles">
+        <div class="tile" onclick="showView('kalender')">
+          <div class="tile-icon">📅</div>
+          <div class="tile-name">Seizoenskalender</div>
+          <div class="tile-count">36 weekendklussen</div>
+          <div class="tile-badge">Planning</div>
+        </div>
+        <div class="tile" onclick="showView('inventaris')">
+          <div class="tile-icon">🌱</div>
+          <div class="tile-name">Plantinventaris</div>
+          <div class="tile-count">47 soorten, 9 zones</div>
+          <div class="tile-badge">Inventaris</div>
+        </div>
+        <div class="tile" onclick="filterCat('snoei')">
+          <div class="tile-icon">✂️</div>
+          <div class="tile-name">Snoeitaken</div>
+          <div class="tile-count">Alle snoeimomenten</div>
+          <div class="tile-badge">Filter</div>
+        </div>
+        <div class="tile" onclick="filterCat('fruit')">
+          <div class="tile-icon">🍎</div>
+          <div class="tile-name">Fruittuin</div>
+          <div class="tile-count">Appel, peer, druif, vijg</div>
+          <div class="tile-badge">Filter</div>
+        </div>
+        <div class="tile" onclick="filterCat('gazon')">
+          <div class="tile-icon">🟩</div>
+          <div class="tile-name">Gazon</div>
+          <div class="tile-count">Voor- & achtertuin</div>
+          <div class="tile-badge">Filter</div>
+        </div>
+        <div class="tile" onclick="filterCat('bollen')">
+          <div class="tile-icon">🌸</div>
+          <div class="tile-name">Bollen</div>
+          <div class="tile-count">Allium + plantmomenten</div>
+          <div class="tile-badge">Filter</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     VIEW 2 — SEIZOENSKALENDER
+═══════════════════════════════════════════════ -->
+<div class="view" id="view-kalender">
+  <div class="season-wrap">
+    <div class="season-title">Seizoenskalender 2025</div>
+    <div class="season-sub">Alle weekendklussen per maand · klik op een taak voor details</div>
+
+    <div class="month-filter" id="month-filter"></div>
+
+    <div class="timeline" id="timeline"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     VIEW 3 — INVENTARIS
+═══════════════════════════════════════════════ -->
+<div class="view" id="view-inventaris">
+  <div class="inv-wrap">
+    <div class="inv-title">Plantinventaris</div>
+    <div class="inv-sub">Alle planten in de tuin · zoek, filter op zone of type</div>
+
+    <div class="inv-toolbar">
+      <input class="inv-search" id="inv-q" type="search" placeholder="Zoek plant, latijn, opmerking…"/>
+      <select class="inv-select" id="inv-zone">
+        <option value="">Alle zones</option>
+      </select>
+      <div class="type-chips" id="type-chips"></div>
+    </div>
+
+    <div class="inv-grid" id="inv-grid"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
+
+const ZONE_ORDER = [
+  "Terras (onder moerbei)",
+  "Border terras (vijg)",
+  "Border terras (krentenboom)",
+  "Border bij veranda",
+  "Border bij wilg",
+  "Achter langs sloot",
+  "Gazon achtertuin",
+  "Pad langs woning",
+  "Voortuin"
+];
+
+const ZONE_CODES = {
+  "Terras (onder moerbei)": "Z1",
+  "Border terras (vijg)": "Z2",
+  "Border terras (krentenboom)": "Z3",
+  "Border bij veranda": "Z4",
+  "Border bij wilg": "Z5",
+  "Achter langs sloot": "Z6",
+  "Gazon achtertuin": "Z7",
+  "Pad langs woning": "Z8",
+  "Voortuin": "Z9"
+};
+
+const INVENTORY = [
+  {zone:"Terras (onder moerbei)", nl:"Moerbei", latin:"Morus alba 'Fruitless'", aantal:4, type:"Boom", opm:"Vormt het dak van het terras."},
+  {zone:"Terras (onder moerbei)", nl:"Davids sneeuwbal", latin:"Viburnum davidii", aantal:4, type:"Heester", opm:"Halfschaduw onder moerbei."},
+  {zone:"Border terras (vijg)", nl:"Vijg", latin:"Ficus carica", aantal:1, type:"Fruit", opm:"Wekelijks oogsten aug–okt."},
+  {zone:"Border terras (vijg)", nl:"Tuinhibiscus", latin:"Hibiscus syriacus", aantal:1, type:"Heester", opm:"Naast vijg."},
+  {zone:"Border terras (vijg)", nl:"Prachtkaars", latin:"Oenothera (Gaura) lindheimeri", aantal:1, type:"Vaste", opm:"Windgevoelig; zomer ±1/3 terug."},
+  {zone:"Border terras (vijg)", nl:"Ooievaarsbek", latin:"Geranium macrorrhizum", aantal:2, type:"Vaste", opm:"(Half)schaduw, geurblad."},
+  {zone:"Border terras (vijg)", nl:"Drop-/Anijsplant", latin:"Agastache foeniculum", aantal:1, type:"Vaste", opm:"Bijenplant; kan zich uitzaaien; evt. steun."},
+  {zone:"Border terras (vijg)", nl:"Kruipend steenzaad", latin:"Lithodora diffusa", aantal:1, type:"Vaste", opm:"Doorlatend, iets zuur; geen winternat."},
+  {zone:"Border terras (vijg)", nl:"Salie 'Hot Lips'", latin:"Salvia microphylla 'Hot Lips'", aantal:1, type:"Vaste", opm:"Voorjaar licht terugsnoeien; lange bloei."},
+  {zone:"Border terras (vijg)", nl:"Vlambloem wit", latin:"Phlox paniculata", aantal:1, type:"Vaste", opm:"Meeldauwgevoelig; delen 3–4 jaar."},
+  {zone:"Border terras (vijg)", nl:"Vedergras", latin:"Nassella tenuissima", aantal:1, type:"Siergras", opm:"Feb tot 10–15 cm; luchtig in winter."},
+  {zone:"Border terras (vijg)", nl:"Purperklokje 'Silver Scrolls'", latin:"Heuchera 'Silver Scrolls'", aantal:1, type:"Vaste", opm:"Wintergroen; voorjaar opschonen; let op taxuskever."},
+  {zone:"Border terras (vijg)", nl:"Dalmatische klokjesbloem", latin:"Campanula portenschlagiana", aantal:5, type:"Vaste", opm:"Na bloei licht terugknippen."},
+  {zone:"Border terras (krentenboom)", nl:"Krentenboom", latin:"Amelanchier lamarckii", aantal:1, type:"Heester", opm:"Bloeit vroeg in voorjaar."},
+  {zone:"Border terras (krentenboom)", nl:"Kruidenmix", latin:"Rozemarijn, Tijm, Oregano, Venkel, Nepeta, Persicaria", aantal:"div", type:"Vaste/kruiden", opm:"Schoonmaken in voorjaar."},
+  {zone:"Border terras (krentenboom)", nl:"Geranium 'Rozanne'", latin:"Geranium 'Rozanne'", aantal:1, type:"Vaste", opm:"Lange bloeitijd."},
+  {zone:"Border terras (krentenboom)", nl:"Sierui 'Drumstick'", latin:"Allium sphaerocephalon", aantal:4, type:"Bol", opm:"Planten in oktober."},
+  {zone:"Border terras (krentenboom)", nl:"Ooievaarsbek", latin:"Geranium macrorrhizum", aantal:1, type:"Vaste", opm:"Geurblad; bodembedekker."},
+  {zone:"Border bij veranda", nl:"Olijf", latin:"Olea europaea", aantal:1, type:"Boom", opm:"Vorstbescherming paraat in nov."},
+  {zone:"Border bij veranda", nl:"Lampenpoetsersgras", latin:"Pennisetum alopecuroides", aantal:3, type:"Siergras", opm:"Snoei in maart."},
+  {zone:"Border bij veranda", nl:"Herfstanemoon", latin:"Anemone hupehensis", aantal:2, type:"Vaste", opm:"Snoei na eerste vorst."},
+  {zone:"Border bij veranda", nl:"Roos", latin:"Rosa (1× rood, 1× wit)", aantal:2, type:"Heester", opm:"Snoei in maart tot 3–5 ogen."},
+  {zone:"Border bij veranda", nl:"Lavendel", latin:"Lavandula angustifolia", aantal:2, type:"Vaste", opm:"Vormsnoei in maart; na bloei in juli."},
+  {zone:"Border bij veranda", nl:"Geranium 'Rozanne'", latin:"Geranium 'Rozanne'", aantal:2, type:"Vaste", opm:"Ook bij olijf."},
+  {zone:"Border bij veranda", nl:"Klokjesbloem 'Emerald'", latin:"Campanula 'Emerald'", aantal:14, type:"Vaste", opm:"Aanplanten sep; onder olijf en roos."},
+  {zone:"Border bij veranda", nl:"Afrikaanse lelie", latin:"Agapanthus sp.", aantal:2, type:"Vaste", opm:"—"},
+  {zone:"Border bij veranda", nl:"Sierui 'Drumstick'", latin:"Allium sphaerocephalon", aantal:15, type:"Bol", opm:"Planten in oktober."},
+  {zone:"Border bij veranda", nl:"Kerstroos", latin:"Helleborus niger", aantal:2, type:"Vaste", opm:"Winterbloei; feb oude bladeren weg."},
+  {zone:"Border bij veranda", nl:"Prachtkaars", latin:"Oenothera (Gaura) lindheimeri", aantal:3, type:"Vaste", opm:"—"},
+  {zone:"Border bij veranda", nl:"Bergsteentijm", latin:"Clinopodium nepeta", aantal:4, type:"Vaste", opm:"Voorjaar terugknippen; zomer licht snoeien."},
+  {zone:"Border bij wilg", nl:"Peer", latin:"Pyrus communis", aantal:1, type:"Fruitboom", opm:"Ras n.t.b.; onder wilg."},
+  {zone:"Border bij wilg", nl:"Magnolia", latin:"Magnolia", aantal:1, type:"Heester", opm:"Naast/onder wilg; lichte bemesting in maart."},
+  {zone:"Border bij wilg", nl:"Lampenpoetsersgras", latin:"Pennisetum alopecuroides", aantal:7, type:"Siergras", opm:"—"},
+  {zone:"Border bij wilg", nl:"Herfstanemoon", latin:"Anemone hupehensis", aantal:4, type:"Vaste", opm:"—"},
+  {zone:"Border bij wilg", nl:"Geranium 'Rozanne'", latin:"Geranium 'Rozanne'", aantal:5, type:"Vaste", opm:"—"},
+  {zone:"Border bij wilg", nl:"Sierui 'Drumstick'", latin:"Allium sphaerocephalon", aantal:4, type:"Bol", opm:"—"},
+  {zone:"Border bij wilg", nl:"Kerstroos", latin:"Helleborus niger", aantal:2, type:"Vaste", opm:"—"},
+  {zone:"Border bij wilg", nl:"Prachtkaars", latin:"Oenothera (Gaura) lindheimeri", aantal:5, type:"Vaste", opm:"—"},
+  {zone:"Border bij wilg", nl:"Salie 'Hot Lips'", latin:"Salvia microphylla 'Hot Lips'", aantal:2, type:"Vaste", opm:"—"},
+  {zone:"Achter langs sloot", nl:"Appel", latin:"Malus domestica", aantal:3, type:"Fruitboom", opm:"Ras n.t.b.; langs sloot."},
+  {zone:"Achter langs sloot", nl:"Druif", latin:"Vitis vinifera", aantal:2, type:"Klimfruit", opm:"Wijndruif; tegen veranda."},
+  {zone:"Achter langs sloot", nl:"Vlinderstruik", latin:"Buddleja davidii", aantal:5, type:"Heester", opm:"Snoei in maart tot 30–50 cm."},
+  {zone:"Achter langs sloot", nl:"Amberboom (leivorm)", latin:"Liquidambar styraciflua", aantal:3, type:"Boom", opm:"Leivorm langs water; zomersnoei."},
+  {zone:"Gazon achtertuin", nl:"Gazon (achtertuin)", latin:"", aantal:"105 m²", type:"Gazon", opm:"Robotmaaier. Verticuteren in apr; 1e bemesting apr, 2e bemesting jul, najaarsbemesting okt (kaliumrijk). Kale plekken doorzaaien na verticuteren."},
+  {zone:"Pad langs woning", nl:"Hortensia", latin:"Hydrangea", aantal:5, type:"Heester", opm:"Langs pad; bemesten in april."},
+  {zone:"Voortuin", nl:"Gazon (voortuin)", latin:"", aantal:"60 m²", type:"Gazon", opm:"Handmaaier. Schaduw/mos aanwezig — bekalken in feb (niet combineren met bemesting). Verticuteren in apr; najaarsbemesting okt. Eventueel mosbestrijding in combinatie met bekalken."},
+  {zone:"Voortuin", nl:"Sierappel", latin:"Malus spp.", aantal:2, type:"Boom", opm:"Waterlot-check in zomer."},
+];
+
+const TASKS = [
+  {month:1, date:"Za 18 jan", title:"Wintersnoei — Druif; Appel & Peer", cat:"snoei", sub:`<ul><li><strong>Druif</strong> (Vitis vinifera): alle scheuten tot 2 knoppen; dode/zwakke takken weg; vóór sapstroom snoeien.</li><li><strong>Appel & Peer</strong>: kruisend/naar binnen weg; 3–4 hoofdtakken per etage; zijscheuten tot 3 knoppen.</li><li><em>Droog en vorstvrij weer.</em></li></ul>`},
+  {month:2, date:"Za 1 feb", title:"Gazon — bekalken (voortuin, mosdruk)", cat:"gazon", sub:`<ul><li>Dun verdelen met kalk; niet combineren met bemesting.</li></ul>`},
+  {month:2, date:"Za 8 feb", title:"Nassella tenuissima — terugknippen", cat:"vaste", sub:`<ul><li>Pol terugknippen tot 10–15 cm.</li></ul>`},
+  {month:2, date:"Za 15 feb", title:"Kerstroos — oude bladeren weg", cat:"vaste", sub:`<ul><li>Helleborus niger: oude/zieke bladeren wegnemen.</li></ul>`},
+  {month:3, date:"Za 1 mrt", title:"Snoei — Rozen & Vlinderstruiken", cat:"snoei", sub:`<ul><li><strong>Rozen</strong> (Rosa): terugsnoei tot 3–5 ogen.</li><li><strong>Vlinderstruik</strong> (Buddleja davidii): tot 30–50 cm; 3–5 hoofdtakken.</li></ul>`},
+  {month:3, date:"Za 8 mrt", title:"Voorjaarssnoei — Lavendel; siergras & Heuchera", cat:"snoei", sub:`<ul><li><strong>Lavendel</strong>: vormsnoei tot boven jong groen (niet in oud hout).</li><li><strong>Pennisetum</strong>: oude halmen afknippen.</li><li><strong>Heuchera 'Silver Scrolls'</strong>: dode bladresten weg, pol luchtig.</li></ul>`},
+  {month:3, date:"Za 15 mrt", title:"Kruidenborder — schoonmaken & reset", cat:"vaste", sub:`<ul><li>Oude stengels weg; houtige kruiden licht terugsnoeien; onkruid wieden.</li></ul>`},
+  {month:3, date:"Za 22 mrt", title:"Magnolia — lichte bemesting", cat:"vaste", sub:`<ul><li>Handje compost/koemestkorrels rondom, niet tegen stam.</li></ul>`},
+  {month:4, date:"Za 5 apr", title:"Druif — aanbinden & scheutselectie", cat:"druif", sub:`<ul><li>Zwakkere dubbele scheuten wegnemen, sterke aanbinden aan leidraad.</li></ul>`},
+  {month:4, date:"Za 12 apr", title:"Hortensia — bemesten; Salvia — terugknippen", cat:"vaste", sub:`<ul><li><strong>Hydrangea</strong>: organisch bemesten.</li><li><strong>Salvia 'Hot Lips'</strong>: tot gezond hout; vorm behouden.</li></ul>`},
+  {month:4, date:"Za 19 apr", title:"Agastache — terugknippen; Gazon — verticuteren", cat:"gazon", sub:`<ul><li><strong>Agastache</strong>: tot 10–15 cm terug.</li><li><strong>Gazon</strong>: licht verticuteren; kale plekjes doorzaaien.</li></ul>`},
+  {month:5, date:"Za 3 mei", title:"Druif — dieven/scheutdunning", cat:"druif", sub:`<ul><li>Zijscheuten (dieven) verwijderen; 1 scheut per positie laten.</li></ul>`},
+  {month:5, date:"Za 10 mei", title:"Appel & Peer — vruchtdunning", cat:"fruit", sub:`<ul><li>Trossen uitdunnen tot 1 vrucht per cluster voor kwaliteit.</li></ul>`},
+  {month:5, date:"Za 17 mei", title:"Krentenboom — lichte vormsnoei (na bloei)", cat:"snoei", sub:`<ul><li>Amelanchier lamarckii: alleen storende takjes na bloei.</li></ul>`},
+  {month:6, date:"Za 7 jun", title:"Druif — zomersnoei & blad lichter maken", cat:"druif", sub:`<ul><li>Blad rond trossen luchtiger; 6e blad voorbij laatste tros toppen.</li></ul>`},
+  {month:6, date:"Za 14 jun", title:"Amberboom (leivorm) — zomersnoei", cat:"snoei", sub:`<ul><li>Liquidambar: jonge zijloten inkorten, leivlak strak houden.</li></ul>`},
+  {month:6, date:"Za 21 jun", title:"Waterlot-check — moerbei, appel, peer", cat:"fruit", sub:`<ul><li>Steile waterscheuten op stam/gestel wegnemen of terugzetten.</li></ul>`},
+  {month:6, date:"Za 28 jun", title:"Magnolia — lichte correcties (na bloei)", cat:"snoei", sub:`<ul><li>Alleen dode/kruisende takken; terughoudend snoeien.</li></ul>`},
+  {month:7, date:"Za 5 jul", title:"Lavendel — zomersnoei (na bloei)", cat:"snoei", sub:`<ul><li>Bloemstelen + topjes weg; niet in oud hout.</li></ul>`},
+  {month:7, date:"Za 12 jul", title:"Gazon — 2e bemesting", cat:"gazon", sub:`<ul><li>Langwerkende mest; beregenen indien droog.</li></ul>`},
+  {month:7, date:"Za 19 jul", title:"Vaste planten — doorbloei stimuleren", cat:"vaste", sub:`<ul><li><strong>Prachtkaars</strong> (Gaura): licht terugknippen voor nieuwe bloei.</li><li><strong>Heuchera</strong>: uitgebloeide aren wegknippen.</li></ul>`},
+  {month:8, date:"Za 2 aug", title:"Druif — toppen lange scheuten", cat:"druif", sub:`<ul><li>Tot 6 bladeren voorbij laatste tros.</li></ul>`},
+  {month:8, date:"Za 9 aug", title:"Vlinderstruik — uitgebloeide pluimen weg", cat:"snoei", sub:`<ul><li>Doorsnijden tot boven jong zijgroen, bloei verlengen.</li></ul>`},
+  {month:8, date:"Za 16 aug", title:"Waterlot-check — moerbei/fruit", cat:"fruit", sub:`<ul><li>Storend waterlot wegnemen.</li></ul>`},
+  {month:8, date:"Za 23 aug", title:"Vijg — rijpheidscheck (t/m begin okt)", cat:"fruit", sub:`<ul><li>Elke week zacht/doorhangend fruit oogsten.</li></ul>`},
+  {month:9, date:"Za 6 sep", title:"Campanula 'Emerald' — aanplanten (olijf & roos)", cat:"vaste", sub:`<ul><li>9 stuks per 1 m², h.o.h. 30 cm, driehoeksverband; goed inwateren.</li></ul>`},
+  {month:9, date:"Za 13 sep", title:"Druif — oogst", cat:"druif", sub:`<ul><li>Suiker/zuur proeven; trossen met snoeischaar knippen.</li></ul>`},
+  {month:9, date:"Za 20 sep", title:"Appel & Peer — oogst", cat:"fruit", sub:`<ul><li>Draai-test (loslaten) voor plukrijpheid.</li></ul>`},
+  {month:9, date:"Za 27 sep", title:"Lithodora — licht vormknippen (na bloei)", cat:"vaste", sub:`<ul><li>Lithodora diffusa: alleen uitstekende sprieten.</li></ul>`},
+  {month:10, date:"Za 4 okt", title:"Sierui 'Drumstick' — bollen planten", cat:"bollen", sub:`<ul><li>Allium sphaerocephalon: 10–15 cm diep; in groepjes voor natuurlijke look.</li></ul>`},
+  {month:10, date:"Za 11 okt", title:"Borders — winterklaar maken", cat:"overig", sub:`<ul><li>Afgestorven stengels weg; vorstgevoelige soorten afdekken.</li></ul>`},
+  {month:10, date:"Za 18 okt", title:"Gazon — najaarsbemesting", cat:"gazon", sub:`<ul><li>Kaliumrijk; bevordert winterhardheid.</li></ul>`},
+  {month:10, date:"Za 25 okt", title:"Kerstroos — mulch; Lavendel — laatste snoei", cat:"vaste", sub:`<ul><li>Kerstroos: dunne laag compost/bladaarde rondom.</li><li>Lavendel: losse bloemresten weg; niet in oud hout.</li></ul>`},
+  {month:11, date:"Za 1 nov", title:"Amberboom (leivorm) — lichte correcties", cat:"snoei", sub:`<ul><li>Kleine vormcorrecties; hoofdsnoei zomers (jun).</li></ul>`},
+  {month:11, date:"Za 8 nov", title:"Herfstanemoon — terugknippen", cat:"vaste", sub:`<ul><li>Anemone hupehensis: na eerste vorst stengels tot de grond weg.</li></ul>`},
+  {month:11, date:"Za 15 nov", title:"Olijf & Vijg — vorstbescherming paraat", cat:"overig", sub:`<ul><li><strong>Olijf</strong> & <strong>Vijg</strong>: vliesdoek/afscherming klaarleggen.</li></ul>`},
+  {month:12, date:"Za 6 dec", title:"Algemene inspectie — borders & klimhulp", cat:"overig", sub:`<ul><li>Storm-/vorstschade checken; losse banden/paaltjes nalopen.</li></ul>`},
+];
+
+const MONTHS = ["Jan","Feb","Mrt","Apr","Mei","Jun","Jul","Aug","Sep","Okt","Nov","Dec"];
+const MONTH_FULL = ["Januari","Februari","Maart","April","Mai","Juni","Juli","Augustus","September","Oktober","November","December"];
+const SEASONS = {
+  0:"winter",1:"winter",2:"lente",3:"lente",4:"lente",
+  5:"zomer",6:"zomer",7:"zomer",8:"herfst",9:"herfst",10:"herfst",11:"winter"
+};
+const SEASON_NL = {winter:"❄️ Winter",lente:"🌱 Lente",zomer:"☀️ Zomer",herfst:"🍂 Herfst"};
+
+const TYPE_TAGS = ["Boom","Heester","Fruitboom","Fruit","Klimfruit","Vaste","Vaste/kruiden","Siergras","Bol","Gazon"];
+
+// ═══════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('view-' + id).classList.add('active');
+  const idx = ['dashboard','kalender','inventaris'].indexOf(id);
+  document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ═══════════════════════════════════════════
+// DASHBOARD — this week
+// ═══════════════════════════════════════════
+function buildThisWeek() {
+  const now = new Date();
+  const monthNow = now.getMonth() + 1; // 1-based
+  const weekTasks = TASKS.filter(t => t.month === monthNow);
+  const label = `${MONTH_FULL[monthNow-1]} — taken`;
+  document.getElementById('week-label').textContent = label;
+  const cont = document.getElementById('week-tasks');
+  if (!weekTasks.length) return;
+  cont.innerHTML = '';
+  weekTasks.forEach(t => {
+    const el = document.createElement('div');
+    el.className = 'week-task';
+    el.innerHTML = `<span class="tag tl-cat cat-${t.cat}">${t.cat}</span> <strong>${t.date}</strong> — ${t.title}`;
+    el.onclick = () => { filterCat(t.cat); };
+    cont.appendChild(el);
+  });
+}
+
+// ═══════════════════════════════════════════
+// SEASON STRIP
+// ═══════════════════════════════════════════
+function buildSeasonStrip() {
+  const now = new Date();
+  const curMonth = now.getMonth();
+  const strip = document.getElementById('season-strip');
+  MONTHS.forEach((m, i) => {
+    const count = TASKS.filter(t => t.month === i+1).length;
+    const s = SEASONS[i];
+    const isCur = i === curMonth;
+    const div = document.createElement('div');
+    div.className = 'ss-month' + (isCur ? ' current active' : '');
+    div.innerHTML = `<div class="ss-season-bar ${s}"></div><div class="ss-name">${m}</div><div class="ss-count">${count} taken</div>`;
+    div.onclick = () => jumpToMonth(i+1);
+    strip.appendChild(div);
+  });
+}
+
+function jumpToMonth(month) {
+  showView('kalender');
+  setTimeout(() => {
+    const el = document.getElementById('tl-month-' + month);
+    if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    // highlight filter
+    document.querySelectorAll('.mf-btn').forEach(b => b.classList.remove('active'));
+    const mBtn = document.querySelector(`.mf-btn[data-month="${month}"]`);
+    if (mBtn) mBtn.classList.add('active');
+    filterTimeline(month, null);
+  }, 80);
+}
+
+// ═══════════════════════════════════════════
+// KALENDER — TIMELINE
+// ═══════════════════════════════════════════
+let tlMonthFilter = null;
+let tlCatFilter = null;
+
+function buildTimeline() {
+  // month filter buttons
+  const mf = document.getElementById('month-filter');
+  const allBtn = document.createElement('button');
+  allBtn.className = 'mf-btn active'; allBtn.textContent = 'Alle maanden';
+  allBtn.onclick = () => { tlMonthFilter = null; renderTimeline(); setMfActive(null); };
+  mf.appendChild(allBtn);
+
+  MONTHS.forEach((m, i) => {
+    const count = TASKS.filter(t => t.month === i+1).length;
+    if (!count) return;
+    const btn = document.createElement('button');
+    btn.className = 'mf-btn'; btn.textContent = `${m} (${count})`;
+    btn.dataset.month = i+1;
+    btn.onclick = () => { tlMonthFilter = i+1; renderTimeline(); setMfActive(i+1); };
+    mf.appendChild(btn);
+  });
+
+  renderTimeline();
+}
+
+function setMfActive(month) {
+  document.querySelectorAll('.mf-btn').forEach(b => {
+    b.classList.toggle('active',
+      month === null ? !b.dataset.month : b.dataset.month == month);
+  });
+}
+
+function renderTimeline() {
+  const tl = document.getElementById('timeline');
+  tl.innerHTML = '';
+
+  const months = [...new Set(TASKS.map(t=>t.month))].sort((a,b)=>a-b);
+  months.forEach(m => {
+    if (tlMonthFilter && tlMonthFilter !== m) return;
+    const tasks = TASKS.filter(t => t.month === m && (!tlCatFilter || t.cat === tlCatFilter));
+    if (!tasks.length) return;
+
+    const sec = document.createElement('div');
+    sec.className = 'tl-month';
+    sec.id = 'tl-month-' + m;
+    const s = SEASONS[m-1];
+    sec.innerHTML = `
+      <div class="tl-month-header">
+        <div class="tl-month-dot"></div>
+        <span class="tl-month-name">${MONTH_FULL[m-1]}</span>
+        <span class="tl-month-season">${SEASON_NL[s]}</span>
+      </div>
+      <div class="tl-items" id="tl-items-${m}"></div>`;
+    tl.appendChild(sec);
+
+    const container = sec.querySelector('.tl-items');
+    tasks.forEach(t => {
+      const det = document.createElement('details');
+      det.className = 'tl-item'; det.dataset.cat = t.cat;
+      det.innerHTML = `
+        <summary class="tl-summary">
+          <span class="tl-date">${t.date}</span>
+          <span class="tl-title">${t.title}</span>
+          <span class="tl-cat cat-${t.cat}">${t.cat}</span>
+          <span class="tl-chevron">›</span>
+        </summary>
+        <div class="tl-body">${t.sub}</div>`;
+      container.appendChild(det);
+    });
+  });
+}
+
+function filterCat(cat) {
+  tlCatFilter = cat;
+  tlMonthFilter = null;
+  showView('kalender');
+  setTimeout(() => {
+    renderTimeline();
+    setMfActive(null);
+  }, 50);
+}
+
+// ═══════════════════════════════════════════
+// INVENTARIS
+// ═══════════════════════════════════════════
+let invZoneFilter = '';
+let invActiveTypes = new Set(TYPE_TAGS);
+
+function buildInvFilters() {
+  const zsel = document.getElementById('inv-zone');
+  ZONE_ORDER.forEach(z => {
+    const o = document.createElement('option'); o.value = z; o.textContent = `${ZONE_CODES[z]} — ${z}`;
+    zsel.appendChild(o);
+  });
+  zsel.addEventListener('change', () => { invZoneFilter = zsel.value; renderInv(); });
+
+  const chips = document.getElementById('type-chips');
+  TYPE_TAGS.forEach(t => {
+    const lbl = document.createElement('label');
+    lbl.className = 'type-chip checked';
+    lbl.innerHTML = `<input type="checkbox" checked value="${t}"> ${t}`;
+    lbl.querySelector('input').addEventListener('change', e => {
+      if (e.target.checked) invActiveTypes.add(t); else invActiveTypes.delete(t);
+      lbl.classList.toggle('checked', e.target.checked);
+      renderInv();
+    });
+    chips.appendChild(lbl);
+  });
+
+  document.getElementById('inv-q').addEventListener('input', renderInv);
+}
+
+function renderInv() {
+  const q = (document.getElementById('inv-q').value || '').toLowerCase();
+  const grid = document.getElementById('inv-grid');
+  grid.innerHTML = '';
+
+  let zonesShown = invZoneFilter ? [invZoneFilter] : ZONE_ORDER;
+  zonesShown.forEach(zone => {
+    const items = INVENTORY.filter(x => {
+      if (x.zone !== zone) return false;
+      if (!invActiveTypes.has(x.type)) return false;
+      if (q) {
+        const blob = [x.nl, x.latin, x.type, x.opm, x.zone].join(' ').toLowerCase();
+        if (!blob.includes(q)) return false;
+      }
+      return true;
+    });
+    if (!items.length) return;
+
+    const hdr = document.createElement('div');
+    hdr.className = 'inv-zone-header';
+    hdr.innerHTML = `<span class="zone-code">${ZONE_CODES[zone]}</span> ${zone}`;
+    grid.appendChild(hdr);
+
+    items.forEach(x => {
+      const card = document.createElement('details');
+      card.className = 'inv-card';
+      const latinDisplay = x.latin ? `<span class="inv-latin">${x.latin}</span>` : '';
+      card.innerHTML = `
+        <summary>
+          <span class="inv-name">${x.nl}</span>
+          ${latinDisplay}
+          <span class="inv-meta">×${x.aantal}</span>
+        </summary>
+        <div class="inv-body">
+          <dl class="inv-dl">
+            <dt>Zone</dt><dd>${ZONE_CODES[x.zone]} — ${x.zone}</dd>
+            <dt>Type</dt><dd><span class="inv-type-badge">${x.type}</span></dd>
+            <dt>Aantal</dt><dd>${x.aantal}</dd>
+            <dt>Opmerkingen</dt><dd>${x.opm || '—'}</dd>
+            ${x.latin ? `<dt>Meer info</dt><dd><a class="plant-link" href="https://www.rhs.org.uk/search?query=${encodeURIComponent(x.latin.split(' ')[0])}" target="_blank" rel="noopener">RHS ↗</a></dd>` : ''}
+          </dl>
+        </div>`;
+      grid.appendChild(card);
+    });
+  });
+
+  if (!grid.querySelector('details.inv-card')) {
+    const empty = document.createElement('div');
+    empty.className = 'zone-empty'; empty.textContent = 'Geen resultaten.';
+    grid.appendChild(empty);
+  }
+}
+
+function goZone(zone) {
+  invZoneFilter = zone;
+  showView('inventaris');
+  setTimeout(() => {
+    document.getElementById('inv-zone').value = zone;
+    renderInv();
+  }, 50);
+}
+
+function filterTimeline(month, cat) {
+  tlMonthFilter = month;
+  tlCatFilter = cat;
+  renderTimeline();
+}
+
+// ═══════════════════════════════════════════
+// BOOT
+// ═══════════════════════════════════════════
+buildThisWeek();
+buildSeasonStrip();
+buildTimeline();
+buildInvFilters();
+renderInv();
+</script>
 </body>
 </html>
